@@ -1,6 +1,6 @@
 <script>
   const params = new URLSearchParams(window.location.search);
-  const selectedClass = params.get("class");
+  const selectedClass = Number(params.get("class"));
 
   const subjectMap = {
     6: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
@@ -8,7 +8,6 @@
     8: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
     9: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
     10: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-
     11: [
       "Physics",
       "Chemistry",
@@ -21,7 +20,6 @@
       "Accountancy",
       "Business Studies"
     ],
-
     12: [
       "Physics",
       "Chemistry",
