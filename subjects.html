@@ -1,49 +1,59 @@
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const selectedClass = Number(params.get("class"));
+  document.addEventListener("DOMContentLoaded", function () {
 
-  const subjectMap = {
-    6: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-    7: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-    8: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-    9: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-    10: ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
-    11: [
-      "Physics",
-      "Chemistry",
-      "Maths",
-      "Biology",
-      "English",
-      "Computer Science",
-      "Physical Education",
-      "Economics",
-      "Accountancy",
-      "Business Studies"
-    ],
-    12: [
-      "Physics",
-      "Chemistry",
-      "Maths",
-      "Biology",
-      "English",
-      "Computer Science",
-      "Physical Education",
-      "Economics",
-      "Accountancy",
-      "Business Studies"
-    ]
-  };
+    const params = new URLSearchParams(window.location.search);
+    const selectedClass = params.get("class");
 
-  document.getElementById("title").innerText =
-    "Class " + selectedClass + " Subjects";
+    const subjectMap = {
+      "6": ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
+      "7": ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
+      "8": ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
+      "9": ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
+      "10": ["Maths", "Science", "SST", "English", "Hindi", "Computer"],
+      "11": [
+        "Physics",
+        "Chemistry",
+        "Maths",
+        "Biology",
+        "English",
+        "Computer Science",
+        "Physical Education",
+        "Economics",
+        "Accountancy",
+        "Business Studies"
+      ],
+      "12": [
+        "Physics",
+        "Chemistry",
+        "Maths",
+        "Biology",
+        "English",
+        "Computer Science",
+        "Physical Education",
+        "Economics",
+        "Accountancy",
+        "Business Studies"
+      ]
+    };
 
-  const container = document.getElementById("subjects");
+    const title = document.getElementById("title");
+    const container = document.getElementById("subjects");
 
-  subjectMap[selectedClass].forEach(subject => {
-    const a = document.createElement("a");
-    a.className = "card";
-    a.href = `chapters.html?class=${selectedClass}&subject=${subject}`;
-    a.innerText = subject;
-    container.appendChild(a);
+    if (!selectedClass || !subjectMap[selectedClass]) {
+      title.innerText = "No subjects found";
+      return;
+    }
+
+    title.innerText = "Class " + selectedClass + " Subjects";
+
+    subjectMap[selectedClass].forEach(subject => {
+      const a = document.createElement("a");
+      a.className = "card";
+      a.href = `chapters.html?class=${selectedClass}&subject=${subject}`;
+      a.innerText = subject;
+      container.appendChild(a);
+    });
+
   });
 </script>
+
